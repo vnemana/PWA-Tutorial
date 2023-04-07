@@ -14,7 +14,7 @@ const renderRecipe = (data, id) => {
 
     const html = `
     <div class="card-panel recipe white row" data-id="${id}">
-        <img src="/img/dish.jpeg" alt="recipe thumb" class="responsive-img">
+        <img src="img/dish.jpeg" alt="recipe thumb" class="responsive-img">
         <div class="recipe-details">
             <div class="recipe-title">${data.title}</div>
             <div class="recipe-ingredients">${data.ingredients}</div>
@@ -26,4 +26,10 @@ const renderRecipe = (data, id) => {
     `;
     recipes.innerHTML += html;
 
+}
+
+//remove recipe from DOM
+const removeRecipe = (id) => {
+    const recipe = document.querySelector(`.recipe[data-id=${id}]`)
+    recipe.remove();
 }
