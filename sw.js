@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static-v3';
+const staticCacheName = 'site-static-v21';
 const dynamicCacheName = 'site-dynamic-v1';
 const assets = [
     '/',
@@ -42,14 +42,14 @@ self.addEventListener('activate', evt => {
 //fetch event
 self.addEventListener('fetch', evt => {
     //console.log('fetch event', evt);
-    evt.respondWith(
-        caches.match(evt.request).then(cacheResponse => {
-            return cacheResponse || fetch(evt.request).then(fetchResponse => {
-                return caches.open(dynamicCacheName).then(cache => {
-                    cache.put(evt.request.url, fetchResponse.clone());
-                    return fetchResponse;
-                })
-            });
-        }).catch(() => caches.match('/pages/fallback.html'))
-    )
+    // evt.respondWith(
+    //     caches.match(evt.request).then(cacheResponse => {
+    //         return cacheResponse || fetch(evt.request).then(fetchResponse => {
+    //             return caches.open(dynamicCacheName).then(cache => {
+    //                 cache.put(evt.request.url, fetchResponse.clone());
+    //                 return fetchResponse;
+    //             })
+    //         });
+    //     }).catch(() => caches.match('/pages/fallback.html'))
+    // )
 });
